@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view 
 from django_filters.rest_framework import DjangoFilterBackend
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 from .models import KnowledgeEntry
 from .serializers import KnowledgeEntrySerializer
@@ -44,5 +45,19 @@ def update_knowledge_entry(request, pk):
 @api_view(['DELETE'])
 def delete_knowledge_entry(request, pk):
     entry = get_object_or_404(KnowledgeEntry, pk=pk)
-    entry.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
+    if request.method == 'DELETE':
+        entry.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+@api_view(['GET'])
+def search_knowledge_entries(request):
+    query = request.GET.get('query', '')
+    if query:
+        entries = KnowledgeEntry.objects.filter(
+            Q(title_icontains=query) | Q(content_icontains=query)
+        )
+        serializer = KnowledgeEntrySerializer(entries, many=True)
+        return Response(serializer.data)
+    return Response({"error" : "Query parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+#ToDo next : filter method
