@@ -1,4 +1,3 @@
-from rest_framework import filters
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view 
@@ -51,13 +50,37 @@ def delete_knowledge_entry(request, pk):
     
 @api_view(['GET'])
 def search_knowledge_entries(request):
-    query = request.GET.get('query', '')
-    if query:
-        entries = KnowledgeEntry.objects.filter(
-            Q(title_icontains=query) | Q(content_icontains=query)
-        )
-        serializer = KnowledgeEntrySerializer(entries, many=True)
-        return Response(serializer.data)
-    return Response({"error" : "Query parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'GET':
+        query = request.GET.get('query', '')
+        if query:
+            entries = KnowledgeEntry.objects.filter(
+                Q(title__icontains=query) | Q(content__icontains=query)
+            )
+            serializer = KnowledgeEntrySerializer(entries, many=True)
+            return Response(serializer.data)
+        return Response({"error" : "Query parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
 
-#ToDo next : filter method
+@api_view(['GET'])
+def filter_knowledge_entries(request):
+    if request.method == 'GET':
+        entries = KnowledgeEntry.objects.all()
+
+        title = request.GET.get('title', None)    
+        tags = request.GET.get('tags', None) 
+        author = request.GET.get('author', None)    
+        start_date = request.GET.get('start_date', None)
+        end_date = request.GET.get('end_date', None)
+
+        if title:
+            entries = entries.filter(title__icontains=title)
+        if tags:
+            entries = entries.filter(tags__icontains=tags)
+        if author:
+            entries = entries.filter(author=author)
+        if start_date:
+            entries = entries.filter(created_at__gte=start_date)
+        if end_date:
+            entries = entries.filter(created_at__lte=end_date)
+
+        serializer = KnowledgeEntrySerializer(entries, many = True)
+        return Response(serializer.data)
