@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.App {
+    text-align: center;
+}
+
+.home header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+.home nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.home .description {
+    padding: 20px;
+}
+
+.search-bar {
+    margin: 20px 0;
+}
