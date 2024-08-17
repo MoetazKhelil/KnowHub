@@ -3,7 +3,7 @@
 import os
 import sys
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append('/c/Users/moeta/Personal Projects/knowledge_management/backend')
 print("Python path:", sys.path)
 
 def main():
