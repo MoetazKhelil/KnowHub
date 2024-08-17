@@ -4,18 +4,21 @@ import Home from './pages/Home';
 import CreateEntry from './pages/CreateEntry';
 import EntriesList from './pages/EntriesList';
 import './styles/styles.css';
+import { KnowledgeProvider } from './context/KnowledgeContext';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/create" element={<CreateEntry />} />
-          <Route path="/entries" element={<EntriesList />} />
-        </Routes>
-      </div>
-    </Router>
+    <KnowledgeProvider>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create" element={<CreateEntry />} />
+            <Route path="/entries" element={<EntriesList />} />
+          </Routes>
+        </div>
+      </Router>
+    </KnowledgeProvider>
   );
 }
 
