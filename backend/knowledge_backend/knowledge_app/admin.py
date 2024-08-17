@@ -3,6 +3,6 @@ from .models import KnowledgeEntry
 
 @admin.register(KnowledgeEntry)
 class KnowledgeEntryAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'created_at', 'updated_at')
+    list_display = ('title', 'created_at', 'updated_at')
     search_fields = ('title', 'content', 'tags')
-    list_filter = ('author', 'tags', 'created_at')
+    list_filter = ( 'tags', 'created_at')

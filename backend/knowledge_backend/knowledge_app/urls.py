@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('knowledge/', views.get_all_knowledge_entries, name='get_all_knowledge_entries'),
+    path('knowledge/all/', views.get_all_knowledge_entries, name='get_all_knowledge_entries'),
     path('knowledge/<int:pk>/', views.get_knowledge_by_id, name='get_knowledge_by_id'),
     path('knowledge/create/', views.create_knowledge_entry, name='create_knowledge_entry'),
     path('knowledge/<int:pk>/update/', views.update_knowledge_entry, name='update_knowledge_entry'),
