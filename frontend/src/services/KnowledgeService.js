@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = 'http://localhost:8000/knowledge/';
 
 const getAllEntries = async () => { 
-    return await axios.get(API_URL);
+    return await axios.get(`${API_URL}all/`);
 };
 
 const getEntryById = async (id) => { 
@@ -27,8 +27,9 @@ const searchEntries = async (query) => {
 };
 
 const filterEntries = async (filters) => {
-    return await axios.get(`${API_URL}filter/`, { params: filters});
+    return await axios.get(`${API_URL}filter/`, { params: filters });
 };
+
 
 export default {
     getAllEntries,
