@@ -1,14 +1,15 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import KnowledgeContext from '../context/KnowledgeContext'
 import SearchBar from '../components/SearchBar';
 import Filter from '../components/Filter';
-
+import Header from '../components/Header';
 
 const Home = () => {
-    const { searchResults, searchEntries, applyFilters } = useContext(KnowledgeContext);
+    const { searchResults, searchEntries, applyFilters, setSearchResults} = useContext(KnowledgeContext);
     const[hasSearched, setHasSearched] = useState(false);
     const [activeFilters, setActiveFilters] = useState({});
+    const navigate = useNavigate();
 
     const handleSearch = (query) => {
         if (query.trim() === '') {
@@ -27,7 +28,7 @@ const Home = () => {
 
     const clearFilters = () => {
         setActiveFilters({});
-        applyFilters({});
+        setSearchResults([]);
         setHasSearched(false);
     };
 
@@ -35,15 +36,21 @@ const Home = () => {
         setHasSearched(false);
     };
 
+    const handleEntryClick = (id) => {
+        navigate(`/entries/${id}`);
+    };
+
+    useEffect(() => {
+        return () => {
+            setSearchResults([]); 
+            setActiveFilters({});  
+            setHasSearched(false); 
+        };
+    }, [setSearchResults]);
+
     return (
         <div className="home">
-            <header>
-                <h1>KnowHub</h1>
-                <nav>
-                    <Link to="/create">Create Entry</Link>
-                    <Link to="/entries">All Entries</Link>
-                </nav>
-            </header>
+            <Header title="KnowHub" />
             <section className="description">
                 <p>Welcome to KnowHub, your knowledge management platform. Use the search bar below to find knowledge entries or apply filters to narrow down the list.</p>
             </section>
@@ -72,11 +79,14 @@ const Home = () => {
                 ) : (
                     <ul>
                     {searchResults.map((entry) => (
-                        <li key={entry.id}>{entry.title}</li>
+                        <li key={entry.id} onClick={() => handleEntryClick(entry.id)}>{entry.title}</li>
                     ))}
                 </ul>
                 )}
             </div>
+            <footer className="footer">
+                <p>KnowHub © 2024</p>
+            </footer>  
         </div>
     )
 };

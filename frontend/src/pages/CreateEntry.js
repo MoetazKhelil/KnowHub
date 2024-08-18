@@ -1,30 +1,24 @@
-// CreateEntry.js
-
-import React, { useState } from 'react';
-import KnowledgeService from '../services/KnowledgeService';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import KnowledgeContext from '../context/KnowledgeContext';
+import Header from '../components/Header';
 
 const CreateEntry = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [tags, setTags] = useState('');
-    const [error, setError] = useState(null);
+    const { createEntry, error } = useContext(KnowledgeContext);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const entryData = { title, content, tags };
-        try {
-            await KnowledgeService.createEntry(entryData);
-            navigate('/entries'); 
-        } catch (err) {
-            setError('Failed to create entry. Please try again.');
-        }
+        createEntry(entryData, navigate);
     };
 
     return (
         <div className="create-entry">
-            <h2>Create New Knowledge Entry</h2>
+            <Header title="Create New Knowledge Entry" />
             {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -54,6 +48,9 @@ const CreateEntry = () => {
                 </div>
                 <button type="submit" className="create-button">Create Entry</button>
             </form>
+            <footer className="footer">
+                <p>KnowHub © 2024</p>
+            </footer> 
         </div>
     );
 };
