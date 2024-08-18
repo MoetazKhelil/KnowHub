@@ -4,13 +4,14 @@ body {
     padding: 0;
     background-color: #f8f9fa;
     color: #212529;
+    height: 100%;
 }
 
 .App {
     text-align: center;
 }
 
-.home header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,9 +19,17 @@ body {
     background-color: #343a40;
     color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #dee2e6;
 }
 
-.home nav a {
+header h1 {
+    font-size: 28px;
+    color: #ffffff;
+    margin: 0;
+}
+
+header nav a {
     color: white;
     text-decoration: none;
     margin: 0 15px;
@@ -28,71 +37,129 @@ body {
     transition: color 0.3s ease;
 }
 
-.home nav a:hover {
+header nav a:hover {
     color: #17a2b8;
 }
 
-.home .description {
-    padding: 30px;
+.section-container, .entries-list, .entry-details {
+    padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px 40px;
-    font-size: 18px;
-    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .results {
-    margin: 40px 40px;
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0; 
+    margin: 0;  
+    width: 100%; 
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.results ul {
+.entry-content {
+    white-space: pre-line; /* Preserve spaces and line breaks */
+    line-height: 1.8; /* Better line spacing */
+    padding: 20px; /* Padding around the content */
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    border: 1px solid #ced4da; /* Light border */
+    font-size: 18px; /* Adjust font size if necessary */
+    color: #495057; /* Slightly darker text color */
+    text-align: left; /* Align text to the left */
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0px;
+}
+
+.section-title {
+    font-size: 22px;
+    color: #495057;
+    margin-top: 0;
+}
+
+.description {
+    font-size: 20px; /* Increase font size */
+    line-height: 1.8; /* More line spacing */
+    margin-bottom: 30px; /* More space at the bottom */
+    padding: 20px; /* Add padding */
+    background-color: #e9ecef; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 1px solid #ced4da; /* Light border */
+    text-align: left; /* Align text to the left */
+}
+
+
+p {
+    margin: 10px 0;
+}
+
+ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    max-width: 800px; /* Limit the width of the list for better readability */
+    margin-left: auto; /* Center the list horizontally */
+    margin-right: auto; /* Center the list horizontally */
 }
 
-.results li {
-    padding: 15px 20px;
-    margin-bottom: 10px;
-    background-color: #e9ecef;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+li {
+    padding: 20px 30px; /* Increase padding for better spacing */
+    margin-bottom: 15px; /* Increase margin for more space between items */
+    background-color: #ffffff; /* Set background color to white for contrast */
+    border-radius: 10px; /* Increase border-radius for more rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Add transform for hover effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Increase shadow for more depth */
+    border: 1px solid #ced4da; /* Add light border for definition */
 }
 
-.results li:hover {
-    background-color: #dee2e6;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+li:hover {
+    background-color: #f8f9fa; /* Lighten the background color on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Make the shadow more prominent on hover */
+    transform: translateY(-5px); /* Add slight lift on hover */
 }
 
-.results p {
+
+.results p, .entry-details p {
     font-size: 18px;
     color: #6c757d;
     text-align: center;
 }
 
+strong {
+    color: #343a40;
+    font-weight: 600;
+}
+
 .active-filters {
-    margin: 20px 40px;
+    margin: 20px 0;
     padding: 20px;
     background-color: #f1f3f5;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.active-filters h3 {
-    margin-top: 0;
-    font-size: 22px;
-    color: #495057;
-}
-
 .active-filters ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 10px 0;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -106,19 +173,56 @@ body {
     font-size: 14px;
 }
 
-.active-filters button {
-    background-color: #dc3545;
-    color: white;
+button, .apply-filters-button {
     padding: 10px 20px;
+    font-size: 16px;
     border: none;
     cursor: pointer;
-    font-size: 16px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
-.active-filters button:hover {
+button {
+    background-color: #dc3545;
+    color: white;
+}
+
+button:hover {
     background-color: #c82333;
+}
+
+.apply-filters-button, .create-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.apply-filters-button:hover, .create-button:hover {
+    background-color: #218838;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
 }
 
 .search-bar {
@@ -137,14 +241,8 @@ body {
 }
 
 .search-button {
-    padding: 10px 20px;
-    font-size: 16px;
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .search-button:hover {
@@ -153,16 +251,6 @@ body {
 
 .filter {
     margin: 20px 0;
-}
-
-.filter-toggle-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
 }
 
 .filter-container {
@@ -192,59 +280,32 @@ body {
     width: 200px;
 }
 
-.apply-filters-button {
-    background-color: #28a745;
+.filter-toggle-button {
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
-    margin-top: 20px;
 }
 
-.create-entry {
-    margin: 20px 40px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.create-entry .form-group {
-    margin-bottom: 20px;
-}
-
-.create-entry .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.create-entry .form-group input,
-.create-entry .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.create-entry .form-group textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-.create-entry .create-button {
-    background-color: #28a745;
+.delete-button {
+    background-color: #dc3545; /* Red background */
     color: white;
-    padding: 10px 20px;
+    padding: 10px 20px; /* Same padding as the create button */
+    font-size: 16px; /* Same font size */
     border: none;
     cursor: pointer;
-    font-size: 16px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    display: inline-block; /* Ensures the button does not stretch to full width */
+    width: auto; /* Makes sure the width is adjusted based on content */
+    max-width: 200px; /* Restricts the maximum width */
+    text-align: center; /* Centers the text inside the button */
+    margin: 10px auto; /* Centers the button with margin on top */
 }
 
-.create-entry .create-button:hover {
-    background-color: #218838;
+.delete-button:hover {
+    background-color: #c82333; /* Darker red on hover */
 }
