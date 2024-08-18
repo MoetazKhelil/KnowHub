@@ -53,17 +53,6 @@ const Filter = ({ onFilter }) => {
                             placeholder="Enter tags"
                         />
                     </div>
-
-                    <div className="filter-group">
-                    <label>Author:</label>
-                        <input
-                            type="text"
-                            value={author}
-                            onChange={(e) => setAuthor(e.target.value)}
-                            onKeyDown={handleKeydown}
-                            placeholder="Enter author"
-                        />
-                    </div>
                     <div className="filter-group">
                         <label>From Date:</label>
                         <input
