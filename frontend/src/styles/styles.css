@@ -66,16 +66,16 @@ header nav a:hover {
 }
 
 .entry-content {
-    white-space: pre-line; /* Preserve spaces and line breaks */
-    line-height: 1.8; /* Better line spacing */
-    padding: 20px; /* Padding around the content */
-    background-color: #f8f9fa; /* Light background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-    border: 1px solid #ced4da; /* Light border */
-    font-size: 18px; /* Adjust font size if necessary */
-    color: #495057; /* Slightly darker text color */
-    text-align: left; /* Align text to the left */
+    white-space: pre-line; 
+    line-height: 1.8; 
+    padding: 20px; 
+    background-color: #f8f9fa; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+    border: 1px solid #ced4da; 
+    font-size: 18px; 
+    color: #495057; 
+    text-align: left; 
 }
 
 .footer {
@@ -96,15 +96,15 @@ header nav a:hover {
 }
 
 .description {
-    font-size: 20px; /* Increase font size */
-    line-height: 1.8; /* More line spacing */
-    margin-bottom: 30px; /* More space at the bottom */
-    padding: 20px; /* Add padding */
-    background-color: #e9ecef; /* Light gray background */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border: 1px solid #ced4da; /* Light border */
-    text-align: left; /* Align text to the left */
+    font-size: 20px; 
+    line-height: 1.8; 
+    margin-bottom: 30px; 
+    padding: 20px; 
+    background-color: #e9ecef; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #ced4da; 
+    text-align: left; 
 }
 
 
@@ -116,27 +116,27 @@ ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    max-width: 800px; /* Limit the width of the list for better readability */
-    margin-left: auto; /* Center the list horizontally */
-    margin-right: auto; /* Center the list horizontally */
+    max-width: 800px; 
+    margin-left: auto; 
+    margin-right: auto;
 }
 
 
 li {
-    padding: 20px 30px; /* Increase padding for better spacing */
-    margin-bottom: 15px; /* Increase margin for more space between items */
-    background-color: #ffffff; /* Set background color to white for contrast */
-    border-radius: 10px; /* Increase border-radius for more rounded corners */
+    padding: 20px 30px; 
+    margin-bottom: 15px; 
+    background-color: #ffffff; 
+    border-radius: 10px; 
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Add transform for hover effect */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Increase shadow for more depth */
-    border: 1px solid #ced4da; /* Add light border for definition */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #ced4da; 
 }
 
 li:hover {
-    background-color: #f8f9fa; /* Lighten the background color on hover */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Make the shadow more prominent on hover */
-    transform: translateY(-5px); /* Add slight lift on hover */
+    background-color: #f8f9fa; 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
+    transform: translateY(-5px); 
 }
 
 
@@ -291,21 +291,21 @@ button:hover {
 }
 
 .delete-button {
-    background-color: #dc3545; /* Red background */
+    background-color: #dc3545; 
     color: white;
-    padding: 10px 20px; /* Same padding as the create button */
-    font-size: 16px; /* Same font size */
+    padding: 10px 20px; 
+    font-size: 16px; 
     border: none;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    display: inline-block; /* Ensures the button does not stretch to full width */
-    width: auto; /* Makes sure the width is adjusted based on content */
-    max-width: 200px; /* Restricts the maximum width */
-    text-align: center; /* Centers the text inside the button */
-    margin: 10px auto; /* Centers the button with margin on top */
+    display: inline-block;
+    width: auto; 
+    max-width: 200px; 
+    text-align: center; 
+    margin: 10px auto; 
 }
 
 .delete-button:hover {
-    background-color: #c82333; /* Darker red on hover */
+    background-color: #c82333; 
 }

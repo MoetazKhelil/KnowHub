@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 const Filter = ({ onFilter }) => {
     const [title, setTitle] = useState('');
     const [tags, setTags] = useState('');
-    const [author, setAuthor] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate ] = useState('');
     const [showFilters, setShowFilters] = useState(false);
@@ -12,7 +11,6 @@ const Filter = ({ onFilter }) => {
         const filters = {
             title,
             tags,
-            author,
             startDate,
             endDate,
         };

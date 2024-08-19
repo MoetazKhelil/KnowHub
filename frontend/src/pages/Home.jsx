@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import KnowledgeContext from '../context/KnowledgeContext'
 import SearchBar from '../components/SearchBar';
 import Filter from '../components/Filter';
