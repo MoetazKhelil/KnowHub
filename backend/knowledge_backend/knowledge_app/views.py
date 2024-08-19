@@ -67,7 +67,6 @@ def filter_knowledge_entries(request):
 
         title = request.GET.get('title', None)    
         tags = request.GET.get('tags', None) 
-        author = request.GET.get('author', None)    
         start_date = request.GET.get('start_date', None)
         end_date = request.GET.get('end_date', None)
 
@@ -75,8 +74,6 @@ def filter_knowledge_entries(request):
             entries = entries.filter(title__icontains=title)
         if tags:
             entries = entries.filter(tags__icontains=tags)
-        if author:
-            entries = entries.filter(author=author)
         if start_date:
             entries = entries.filter(created_at__gte=start_date)
         if end_date:
